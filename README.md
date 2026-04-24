@@ -72,6 +72,9 @@ The Mapper graph was built using:
 
 This produced a graph with **66 nodes, 171 edges**, and an average of 30.7 patients per node — interpretable at the clinical level.
 
+<p align="center">
+  <img src="figures/Mapper.png" width="700" alt="Grafo del Algoritmo Mapper">
+</p>
 ---
 
 ### Act 3 — Topological Findings & The Medication Hypothesis
@@ -121,12 +124,24 @@ We trained a classifier to predict blood pressure control using all 22 clinical 
 8. Glucose
 9. Pulse
 
+<p align="center">
+  <img src="figures/BloodPreasure_risk_dist.png" width="400" alt="Distribución de Presión Arterial">
+  <img src="figures/risk_variables.png" width="400" alt="Variables de Riesgo">
+</p>
+<p align="center">
+  <img src="figures/Healthy_variables.png" width="600" alt="Variables Saludables">
+</p>
+
+
 Medications appeared **at the bottom of the ranking** with importance scores of 0.012–0.015. When we trained two separate models — one with only lifestyle/metabolic variables, one with only medications — their ROC-AUC scores were virtually identical (~0.54 each).
 
 **Conclusion: in this cohort, metabolic and body composition variables predicted blood pressure control far better than pharmacological scheme. The data suggests that without addressing lifestyle factors, medication alone has limited impact.**
 
 The best Random Forest model achieved **ROC-AUC = 0.661** — not clinically reliable enough for individual-level prediction. Given the absence of longitudinal follow-up data, this was expected and the predictive model was discarded.
 
+<p align="center">
+  <img src="figures/RandomForest.png" width="600" alt="Importancia de Variables RandomForest">
+</p>
 ---
 
 ### Act 4 — The Health Score & Topological Routing Algorithm
