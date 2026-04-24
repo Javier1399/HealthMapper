@@ -347,9 +347,7 @@ The raw survey data was provided by INMEGEN under a research collaboration agree
 
 ## Authors
 
-**Javier Romero Santos** · Data Science & Mathematics, Tecnológico de Monterrey  
-**Raúl Infante Padilla** · Tecnológico de Monterrey  
-**Mauro Artemio Sotelo** · Tecnológico de Monterrey  
+**Javier Romero Santos** · Data Science & Mathematics, Tecnológico de Monterrey   
 
 *In collaboration with Dr. Claudia Rangel — INMEGEN*
 
