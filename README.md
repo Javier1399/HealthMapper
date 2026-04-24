@@ -6,7 +6,7 @@
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-RandomForest-F7931E?style=flat&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](LICENSE)
 
-> **A Topological Data Analysis pipeline that maps geriatric patient profiles, computes a clinically-grounded health score, and generates personalized habit recommendations by navigating a Mapper graph — identifying the minimum behavioral changes needed to reach a healthier profile.**
+> **A Topological Data Analysis pipeline that maps geriatric patient profiles, computes a clinically-grounded health score, and generates personalized habit recommendations by navigating a Mapper graph. The algorithm identifies the minimum behavioral changes needed to reach a healthier profile.**
 
 ---
 
