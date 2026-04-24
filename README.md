@@ -35,7 +35,7 @@ The initial phase used **Principal Component Analysis** and **hierarchical clust
 - PCA generated **3 separable clusters**, providing a useful first segmentation — but the separation was significantly influenced by the arbitrary BMI-based split we imposed (taking only extreme cases: BMI > 30 and BMI < 25, excluding the messy middle). This reduced noise and improved the dendrogram structure considerably.
 - The **heatmap + hierarchical clustering** revealed that when a "healthy profile" threshold was defined *a priori*, patients clustered cleanly inside and outside that boundary. Seemingly intuitive, but the patterns *within* each group showed surprisingly diverse and well-defined behavioral subgroups.
 - One practically relevant finding: there were detectable patterns in how frequently patients needed medical checkups to stay stable — some patients, particularly those with low cholesterol and low sugar intake, showed profiles consistent with reduced monitoring needs without increased risk.
-- **Critical limitation:** meaningful separation only emerged at the extremes. The middle — most of the real clinical world — was too heterogeneous for PCA to structure. PCA flattens multidimensional data into a 2D shadow; it cannot preserve local structure across 20+ variables simultaneously.
+- **Critical limitation:** meaningful separation only emerged at the extremes. The middle was too heterogeneous for PCA to structure. PCA flattens multidimensional data into a 2D shadow; it cannot preserve local structure across 20+ variables simultaneously.
 
 This limitation motivated the shift to Topological Data Analysis.
 
