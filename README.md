@@ -23,6 +23,20 @@ The dataset contains clinical measurements, metabolic markers, lifestyle habits,
 3. *Can we build a tool that tells a patient what minimum habit changes would improve their health score — based on similar real patients who already achieved it?*
 
 ---
+## App Demo
+
+🚀 **[Live App — Streamlit Cloud](https://mapperappinmegen-uwcob93r4mehwovyuy6gsu.streamlit.app/)** *(replace with your deployment URL)*
+
+The app accepts clinical inputs — metabolic markers, anthropometric measurements, lifestyle habits, and diagnostic status — and returns:
+
+- A **Health Score (0–8)** with component breakdown
+- A **Clinical Risk Score (0–3)** based on chronic diagnoses
+- A **topological routing result**: what the closest higher-scoring real patients in the dataset look like
+- **Top 3 personalized recommendations** ordered by gap magnitude, with concrete actionable advice
+
+> *"Your Health Score is 4/8. Patients with your same profile (Hypertension) have reached 6.7/8. The highest-impact changes for your profile are: 1) Reduce waist circumference, 2) Lower triglycerides, 3) Increase physical activity."*
+
+---
 
 ## Research Journey
 
@@ -250,21 +264,6 @@ Streamlit Application
 ```
 
 **Stack:** Python 3.10 · pandas · scikit-learn · kmapper · networkx · DBSCAN · Random Forest · scipy · Streamlit · Plotly
-
----
-
-## App Demo
-
-🚀 **[Live App — Streamlit Cloud](https://mapperappinmegen-uwcob93r4mehwovyuy6gsu.streamlit.app/)** *(replace with your deployment URL)*
-
-The app accepts clinical inputs — metabolic markers, anthropometric measurements, lifestyle habits, and diagnostic status — and returns:
-
-- A **Health Score (0–8)** with component breakdown
-- A **Clinical Risk Score (0–3)** based on chronic diagnoses
-- A **topological routing result**: what the closest higher-scoring real patients in the dataset look like
-- **Top 3 personalized recommendations** ordered by gap magnitude, with concrete actionable advice
-
-> *"Your Health Score is 4/8. Patients with your same profile (Hypertension) have reached 6.7/8. The highest-impact changes for your profile are: 1) Reduce waist circumference, 2) Lower triglycerides, 3) Increase physical activity."*
 
 ---
 
