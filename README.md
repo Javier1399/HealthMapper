@@ -231,7 +231,7 @@ Streamlit Application
 
 ## App Demo
 
-🚀 **[Live App — Streamlit Cloud](https://your-app-url.streamlit.app)** *(replace with your deployment URL)*
+🚀 **[Live App — Streamlit Cloud](https://mapperappinmegen-uwcob93r4mehwovyuy6gsu.streamlit.app/)** *(replace with your deployment URL)*
 
 The app accepts clinical inputs — metabolic markers, anthropometric measurements, lifestyle habits, and diagnostic status — and returns:
 
