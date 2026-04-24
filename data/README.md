@@ -20,4 +20,4 @@ The files distributed alongside the Streamlit application contain only:
 
 If you are a researcher interested in the methodology and wish to apply it to your own dataset, the pipeline in `notebooks/02_tda_mapper_pipeline.ipynb` is fully documented and designed to be reproducible on any tabular clinical dataset with appropriate variable mapping.
 
-Contact: [f.javier0599@gmail.com]
+Contact: [f.romero0599@gmail.com]
