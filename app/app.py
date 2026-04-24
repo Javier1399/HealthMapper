@@ -5,6 +5,7 @@ import joblib
 import json
 import networkx as nx
 import plotly.graph_objects as go
+import os
 
 # ── PAGE CONFIG ────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -139,14 +140,16 @@ div[data-testid="stForm"] {
 </style>
 """, unsafe_allow_html=True)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # ── CARGAR ACTIVOS ─────────────────────────────────────────────────────────────
+
 @st.cache_resource
 def cargar_activos():
-    metadata  = joblib.load('metadata.pkl')
-    df_data   = pd.read_csv('df_active_habitos.csv', index_col=0)
-    df_nodes  = pd.read_csv('nodos_stats_habitos.csv')
+    df_data  = pd.read_csv(os.path.join(BASE_DIR, 'df_active_habitos.csv'), index_col=0)
+    df_nodes = pd.read_csv(os.path.join(BASE_DIR, 'nodos_stats_habitos.csv'))
 
-    with open('grafo_adyacencia.json', 'r') as f:
+    with open(os.path.join(BASE_DIR, 'grafo_adyacencia.json'), 'r') as f:
         datos_grafo = json.load(f)
     if 'links' not in datos_grafo and 'edges' in datos_grafo:
         datos_grafo['links'] = datos_grafo.pop('edges')
@@ -157,9 +160,15 @@ def cargar_activos():
     except Exception:
         G_topo = nx.node_link_graph(
             datos_grafo,
-            attrs={'source':'source','target':'target','name':'id','key':'key','link':'links'}
+            attrs={'source':'source','target':'target',
+                   'name':'id','key':'key','link':'links'}
         )
-    return metadata, df_data, df_nodes, G_topo
+    meta = {}
+    try:
+        meta = joblib.load(os.path.join(BASE_DIR, 'metadata.pkl'))
+    except FileNotFoundError:
+        pass
+    return df_data, df_nodes, G_topo, meta
 
 try:
     metadata, df_data, df_nodes, G_topo = cargar_activos()
