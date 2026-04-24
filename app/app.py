@@ -5,7 +5,6 @@ import joblib
 import json
 import networkx as nx
 import plotly.graph_objects as go
-import os
 
 # ── PAGE CONFIG ────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -140,43 +139,42 @@ div[data-testid="stForm"] {
 </style>
 """, unsafe_allow_html=True)
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 # ── CARGAR ACTIVOS ─────────────────────────────────────────────────────────────
-
 @st.cache_resource
 def cargar_activos():
-    df_data  = pd.read_csv(os.path.join(BASE_DIR, 'df_active_habitos.csv'), index_col=0)
-    df_nodes = pd.read_csv(os.path.join(BASE_DIR, 'nodos_stats_habitos.csv'))
+    df_data  = pd.read_csv('df_active_habitos.csv', index_col=0)
+    df_nodes = pd.read_csv('nodos_stats_habitos.csv')
 
-    with open(os.path.join(BASE_DIR, 'grafo_adyacencia.json'), 'r') as f:
+    with open('grafo_adyacencia.json', 'r') as f:
         datos_grafo = json.load(f)
-    if 'links' not in datos_grafo and 'edges' in datos_grafo:
-        datos_grafo['links'] = datos_grafo.pop('edges')
-    if 'links' not in datos_grafo:
-        datos_grafo['links'] = []
+
+    # NetworkX >= 3.4 usa 'edges', versiones anteriores usan 'links'
+    # Normalizamos a 'edges' que es el estándar actual
+    if 'links' in datos_grafo and 'edges' not in datos_grafo:
+        datos_grafo['edges'] = datos_grafo.pop('links')
+    if 'edges' not in datos_grafo:
+        datos_grafo['edges'] = []
+
     try:
+        G_topo = nx.node_link_graph(datos_grafo, edges='edges')
+    except TypeError:
+        # fallback para versiones antiguas de networkx
         G_topo = nx.node_link_graph(datos_grafo)
-    except Exception:
-        G_topo = nx.node_link_graph(
-            datos_grafo,
-            attrs={'source':'source','target':'target',
-                   'name':'id','key':'key','link':'links'}
-        )
+    # metadata.pkl es opcional
     meta = {}
     try:
-        meta = joblib.load(os.path.join(BASE_DIR, 'metadata.pkl'))
+        meta = joblib.load('metadata.pkl')
     except FileNotFoundError:
         pass
     return df_data, df_nodes, G_topo, meta
 
 try:
-    metadata, df_data, df_nodes, G_topo = cargar_activos()
-    p33 = metadata['p33']
-    p66 = metadata['p66']
+    df_data, df_nodes, G_topo, metadata = cargar_activos()
+    p33 = metadata.get('p33', 15.5)
+    p66 = metadata.get('p66', 47.96)
 except Exception as e:
     st.error(f"Error cargando archivos: {e}")
-    st.info("Necesitas: metadata.pkl · df_active_habitos.csv · nodos_stats_habitos.csv · grafo_adyacencia.json")
+    st.info("Necesitas: df_active_habitos.csv · nodos_stats_habitos.csv · grafo_adyacencia.json")
     st.stop()
 
 # ── DEFINICIÓN DE COMPONENTES ──────────────────────────────────────────────────
