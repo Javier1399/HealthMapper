@@ -14,7 +14,7 @@
 
 This project was developed in collaboration with **INMEGEN** (Instituto Nacional de Medicina Genómica, Mexico), where a clinical researcher provided a survey dataset of geriatric patients and sought analytical insights from the data.
 
-The dataset contains clinical measurements, metabolic markers, lifestyle habits, and pharmacological treatment information from **966 elderly patients**. No ground-truth longitudinal follow-up was available — a constraint that shaped every methodological decision in this project.
+The dataset contains clinical measurements, metabolic markers, lifestyle habits, and pharmacological treatment information from **966 elderly patients**. Very few ground-truth longitudinal follow-up was available, which was a constraint that shaped every methodological decision in this project.
 
 **The core question evolved over three research phases:**
 
