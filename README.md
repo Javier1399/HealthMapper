@@ -39,6 +39,15 @@ The initial phase used **Principal Component Analysis** and **hierarchical clust
 
 This limitation motivated the shift to Topological Data Analysis.
 
+<p align="center">
+  <img src="figures/PCA_loads.png" width="450" alt="Cargas del PCA">
+  <img src="figures/Heatmap_PCA.png" width="450" alt="Heatmap PCA">
+</p>
+
+<p align="center">
+  <img src="figures/KMeans_PCA.png" width="600" alt="Clustering K-Means sobre PCA">
+</p>
+
 ---
 
 ### Act 2 — From Linear to Topological: Why Mapper?
